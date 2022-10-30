@@ -7,6 +7,12 @@ if not sys.argv[1:]:
     exit(1)
 
 with open(sys.argv[-1], "rb") as file:
+    magic = file.read(4)
+
+    if magic != b'DUKE':
+        print("Not a DUKE file!!!")
+        exit(1)
+    
     width = int.from_bytes(file.read(2), "little")
     height = int.from_bytes(file.read(2), "little")
     length = int.from_bytes(file.read(4), "little")

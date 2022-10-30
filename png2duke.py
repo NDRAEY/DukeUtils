@@ -49,6 +49,7 @@ with open(sys.argv[-1]+".duke", 'wb') as img:
     #if alpha:
     #    del datanew[3::4]
 
+    img.write(b"DUKE")
     img.write(struct.pack("<HHIc", width, height, len(datanew), bytes([int(alpha)])))
     img.write(bytes(datanew))
     img.close()
